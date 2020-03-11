@@ -5,23 +5,17 @@
 
 {% block subcontent %}
 
-<head><body>
-      {% for message in get_flashed_messages() %}
-      <p> {{ message }} </p>
-      {% endfor %}
-      </body></head>
+
       
 <div class="jumbotron">
       <h1 align='center'>{{ title }}</h1>
    </div>
-
 {% if blogs %}
-{% for blog in blogs %}
-<h3><a href="/blogs/{{ blog['post_id'] }}">{{blog['title']}}</a></h3>
-<h5>Written by {{blog['username']}}</h5>
+{% for i in blogs %}
+<h3><a href="/blog/{{ i['post_id'] }}">{{i['title']}}</a></h3>
+<h5>Written by {{i['author']}}</h5>
 <br>
-
-      {% endfor %}
+{% endfor %}
 {% else %}
 <h3>No blogs have been written yet</h3>
 {% endif %}

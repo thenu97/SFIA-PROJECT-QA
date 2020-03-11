@@ -1,9 +1,11 @@
+import flask
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_mysqldb import MySQL
 from flask_ckeditor import CKEditor
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -13,17 +15,20 @@ app.config['MYSQL_HOST'] = os.environ['MYSQLHOST']
 app.config['MYSQL_USER'] = os.environ['MYSQLUSER']
 app.config['MYSQL_PASSWORD'] = os.environ['MYSQLPASSWORD']
 app.config['MYSQL_DB'] = os.environ['MYSQLDB']
+app.config['MYSQL_CURSORCLASS']='DictCursor'
+
 mysql = MySQL(app)
 
-app.config['SECRET_KEY'] = os.urandom(5)
+app.config['SECRET_KEY'] = os.urandom(24)
 
 
 
 @app.route('/')
 def home():
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * from POST")
+    resultValue = cur.execute("SELECT * from POSTS")
     if resultValue > 0:
+        session['login'] = True
         blogs = cur.fetchall()
         cur.close()
         return render_template('index.html', title='REVISION BLOG', blogs=blogs)
@@ -54,6 +59,7 @@ def register():
     return render_template('register.html')
 
 
+sessionholder = []
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
@@ -64,32 +70,21 @@ def login():
         resultValue = cur.execute("SELECT * FROM USER WHERE username = %s", ([username]))
         print(resultValue)
         if resultValue > 0:
-            USER = cur.fetchall()
-            info = []
-            lk = []
-            for row in USER:
-                info.append(row)
-                for i in info:
-                    for j in i:
-                        lk.append(j)
-            print(info)
-            print(lk)
-            print("USER")
-            print(lk[5])
-            mysql.connection.commit()
-            if check_password_hash(lk[5], userDetails['password']):
-                print("second if")
+            user = cur.fetchone()
+            if check_password_hash(user['password'], userDetails['password']):
                 session['login'] = True
-                session['firstName'] = lk[1]
-                session['secondName'] = lk[2]
+                session['firstName'] = user['first_name']
+                session['secondName'] = user['second_name']
+                sessionholder.append(session['firstName'])
+                sessionholder.append(session['secondName'])
                 flash('Welcome ' + session['firstName'] + '! You have been successfully logged in', 'success')
+                mysql.connection.commit()
             else:
                 print("second else")
                 cur.close()
                 flash("Password does not match", 'danger')
                 return render_template('login.html')
         else:
-            print("In else when result value <=0")
             cur.close()
             flash("Username not found", 'danger')
             return render_template('login.html')
@@ -101,13 +96,15 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
+    session['login'] = True
     if request.method == 'POST':
         blogpost = request.form
         title = blogpost['title']
         content = blogpost['content']
-        author = session.get('firstName') + ' ' + session.get('secondName')
+        print(sessionholder)
+        author = sessionholder[0] + " " + sessionholder[1]
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO POST (title, author, content) VALUES(%s,%s,%s)", (title, author, content))
+        cur.execute("INSERT INTO POSTS (title, author, content) VALUES(%s,%s,%s)", (title, author, content))
         mysql.connection.commit()
         cur.close()
         flash("Successfully posted new blog", 'success')
@@ -118,21 +115,23 @@ def create():
 
 @app.route('/blog/<int:id>')
 def blogs(id):
+    session['login'] = True
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * FROM POST WHERE post_id = {}".format(id))
-    if resultValue>0:
-        blog = cur.fetchone()
-        return render_template('blog.html', blog=blog)
+    resultValue = cur.execute("SELECT * FROM POSTS WHERE post_id = {}".format(id))
+    if resultValue > 0:
+        posts = cur.fetchone()
+        return render_template('blog.html', posts=posts)
     return "Blog not found"
 
+print(sessionholder)
 
-
-@app.route('/my-blogs')
+@app.route('/my-blogs', methods=['GET','POST'])
 def my_blog():
-    username = session['username']
+    session['login'] = True
+    author = sessionholder[0] + " " + sessionholder[1]
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT content from POST WHERE username = %s", [username])
-    if resultValue>0:
+    resultValue = cur.execute("SELECT content from POSTS WHERE author = %s", [author])
+    if resultValue > 0:
         my_blogs = cur.fetchall()
         return render_template('my-blog.html', my_blogs=my_blogs)
     else:
@@ -143,16 +142,17 @@ def my_blog():
 @app.route('/edit-blog/<int:id>', methods=['GET', 'POST'])
 def edit_blog(id):
     if request.method == 'POST':
+        session['login'] = True
         cur = mysql.connection.cursor()
         title = request.form['title']
         content = request.form['content']
-        cur.execute("UPDATE Post SET title = %s, WHERE post_id = %s",(title, content, post_id))
+        cur.execute("UPDATE POSTS SET title = %s, content = %s WHERE post_id = %s",(title, content, id))
         mysql.connection.commit()
         cur.close()
         flash('Blog updated successfully', 'success')
         return redirect('/blogs/{}'.format(id))
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * FROM Post where post_id = {}".format(id))
+    resultValue = cur.execute("SELECT * FROM POSTS where post_id = {}".format(id))
     if resultValue>0:
         blog = cur.fetchone()
         blog_form = {}
@@ -164,8 +164,9 @@ def edit_blog(id):
 
 @app.route('/delete-blog/<int:id>', methods=['GET', 'POST'])
 def delete_blog(id):
+    session['login'] = True
     cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM Post WHERE post_id = {}".format(id))
+    cur.execute("DELETE FROM POSTS WHERE post_id = {}".format(id))
     mysql.connection.commit()
     flash("Your blog has been deleted", 'success')
     return redirect('/my-blogs')
@@ -174,15 +175,16 @@ def delete_blog(id):
 
 @app.route('/logout')
 def logout():
-    session.clear()
+    session['login'] = False
     flash("You have been logged out", 'info')
-    return redirect('/')
+    return redirect('/login/')
 
 
 
 @app.route('/account/delete', methods=['GET','POST'])
 def account_delete():
     if request.method == 'POST':
+        session['login'] = True
         userDetails = request.form
         cur = mysql.connection.cursor()
         first_name = userDetails['first_name']

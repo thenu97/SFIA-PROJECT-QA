@@ -18,8 +18,10 @@ Coolio
   <span style="display: inline-block;">BLOGOIC</span></a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="/create">Create</a></li>
-      <li><a href="/my-blogs">My Blogs</a></li> </ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/create">Create Post</a></li>
+      <li><a href="/my-blogs">View Post</a></li> </ul>
       <ul class="pull-right nav navbar-nav">
       <li><a href="/logout">Logout</a></li>     
     <li><a href="/account/delete">Delete Account</a></li>
@@ -49,11 +51,18 @@ Coolio
 {% endblock %}
 
     {% block content %}
-      
-          {% block subcontent %}
-          {% endblock %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+      <ul>
+        {% for category, message in messages %}
+        <li class="alert alert-{{ category }}">{{message}}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+{% block subcontent %}
+  {% endblock %}
     
-
 {% endblock %}
 
 </html>
