@@ -8,7 +8,8 @@ import os
 
 app = Flask(__name__)
 Bootstrap(app)
-CKEditor(app)
+ckeditor = CKEditor(app)
+
 
 app.config['MYSQL_HOST'] = os.environ['MYSQLHOST']
 app.config['MYSQL_USER'] = os.environ['MYSQLUSER']
@@ -30,13 +31,13 @@ def home():
         cur.close()
         return render_template('index.html', title='REVISION BLOG', blogs=blogs)
     cur.close()
-    return render_template("index.html", blogs=None)
+    return render_template("index.html", title='REVISION BLOG', blogs=None)
 
 
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template("about.html", title='ABOUT US')
 
 
 
