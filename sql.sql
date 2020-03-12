@@ -29,3 +29,5 @@ PRIMARY KEY (tag_id),
 FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
 );
 
+
+SELECT TAG.post_id POSTS.post_id 
