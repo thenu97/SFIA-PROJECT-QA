@@ -6,7 +6,6 @@ from flask_ckeditor import CKEditor
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-
 app = Flask(__name__)
 Bootstrap(app)
 CKEditor(app)
@@ -19,8 +18,7 @@ app.config['MYSQL_CURSORCLASS']='DictCursor'
 
 mysql = MySQL(app)
 
-app.config['SECRET_KEY'] = os.urandom(24)
-
+app.config['SECRET_KEY'] = 'secret'
 
 
 @app.route('/')
@@ -28,18 +26,17 @@ def home():
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * from POSTS")
     if resultValue > 0:
-        session['login'] = True
         blogs = cur.fetchall()
         cur.close()
         return render_template('index.html', title='REVISION BLOG', blogs=blogs)
     cur.close()
-    return render_template("index.html", title='REVISION BLOG', blogs=None)
+    return render_template("index.html", blogs=None)
 
 
 
 @app.route('/about')
 def about():
-    return render_template("about.html", title='WHAT ARE WE FOR?')
+    return render_template("about.html")
 
 
 
@@ -59,7 +56,6 @@ def register():
     return render_template('register.html')
 
 
-sessionholder = []
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
@@ -68,19 +64,15 @@ def login():
         username = userDetails['username']
         cur = mysql.connection.cursor()
         resultValue = cur.execute("SELECT * FROM USER WHERE username = %s", ([username]))
-        print(resultValue)
         if resultValue > 0:
             user = cur.fetchone()
             if check_password_hash(user['password'], userDetails['password']):
                 session['login'] = True
                 session['firstName'] = user['first_name']
                 session['secondName'] = user['second_name']
-                sessionholder.append(session['firstName'])
-                sessionholder.append(session['secondName'])
                 flash('Welcome ' + session['firstName'] + '! You have been successfully logged in', 'success')
                 mysql.connection.commit()
             else:
-                print("second else")
                 cur.close()
                 flash("Password does not match", 'danger')
                 return render_template('login.html')
@@ -101,8 +93,7 @@ def create():
         blogpost = request.form
         title = blogpost['title']
         content = blogpost['content']
-        print(sessionholder)
-        author = sessionholder[0] + " " + sessionholder[1]
+        author = session['firstName'] + " " + session['secondName']
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO POSTS (title, author, content) VALUES(%s,%s,%s)", (title, author, content))
         mysql.connection.commit()
@@ -119,23 +110,28 @@ def blogs(id):
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM POSTS WHERE post_id = {}".format(id))
     if resultValue > 0:
-        posts = cur.fetchone()
-        return render_template('blog.html', posts=posts)
+        blog = cur.fetchone()
+        cur.close()
+        return render_template('blog.html', blog=blog)
     return "Blog not found"
 
-print(sessionholder)
 
-@app.route('/my-blogs', methods=['GET','POST'])
+
+@app.route('/my-blogs', methods=['GET', 'POST'])
 def my_blog():
     session['login'] = True
-    author = sessionholder[0] + " " + sessionholder[1]
+    author = session['firstName'] + " " + session['secondName']
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT content from POSTS WHERE author = %s", [author])
+    resultValue = cur.execute("SELECT * from POSTS WHERE author = %s", [author])
+    print(resultValue)
     if resultValue > 0:
         my_blogs = cur.fetchall()
-        return render_template('my-blog.html', my_blogs=my_blogs)
+        print(my_blogs)
+        cur.close()
+        return render_template('my-blog.html', my_blogss=my_blogs)
     else:
-        return render_template('my-blog.html', my_blogs=None)
+        cur.close()
+        return render_template('my-blog.html', my_blogss=None)
 
 
 
@@ -150,19 +146,20 @@ def edit_blog(id):
         mysql.connection.commit()
         cur.close()
         flash('Blog updated successfully', 'success')
-        return redirect('/blogs/{}'.format(id))
+        return redirect('/blog/{}'.format(id))
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * FROM POSTS where post_id = {}".format(id))
     if resultValue>0:
         blog = cur.fetchone()
+        print(blog)
         blog_form = {}
         blog_form['title'] = blog['title']
         blog_form['content'] = blog['content']
-    return render_template('edit-blog.html', blog_form=blog_form)
+    return render_template('editblog.html', blog_form=blog_form)
 
 
 
-@app.route('/delete-blog/<int:id>', methods=['GET', 'POST'])
+@app.route('/delete-blog/<int:id>')
 def delete_blog(id):
     session['login'] = True
     cur = mysql.connection.cursor()

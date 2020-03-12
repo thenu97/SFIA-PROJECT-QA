@@ -2,17 +2,17 @@
 
 {% block subcontent %}
 <div class="container text-center">
-<h1>{{posts['title']}}</h1>
+<h1>{{blog['title']}}</h1>
 </div>
 
 <br>
 <div class="container">
-<p>{{posts['content'] | safe }} </p>
+<p>{{blog['content'] | safe }} </p>
 </div>
 <br>
 
 <div class="container text-left">
-<p>Written by: {{posts['author']}}</p>
+<p>Written by: {{blog['author']}}</p>
 </div>
 
 {% endblock %}

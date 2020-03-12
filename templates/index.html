@@ -13,7 +13,7 @@
 {% if blogs %}
 {% for i in blogs %}
 <h3><a href="/blog/{{ i['post_id'] }}">{{i['title']}}</a></h3>
-<h5>Written by {{i['author']}}</h5>
+<h5>Written by {{ i['author'] }}</h5>
 <br>
 {% endfor %}
 {% else %}
