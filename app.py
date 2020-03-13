@@ -29,13 +29,16 @@ def home():
     if resultValue > 0:
         blogs = cur.fetchall()
         print(blogs)
-        resValue = cur.execute("SELECT * FROM TAGS")
+        resValue = cur.execute("SELECT * FROM TAGSS")
         if resValue > 0:
             t = cur.fetchall()
             print(t)
             cur.close()
             return render_template('index.html', title='VOICE YOUR VIEWS', blogs=blogs, t=t)
-    cur.close()
+        else:
+            return render_template('index.html', title='VOICE YOUR VIEWS', blogs=blogs)
+            cur.close()
+    cur.close()  
     return render_template("index.html", title='VOICE YOUR VIEWS', blogs=None, t=None)
 
 
@@ -122,7 +125,7 @@ def tag():
         if resultValue>0:
             ind = cur.fetchone()
             print(ind['post_id'])
-            cur.execute("INSERT INTO TAGS (post_id, tag, title) VALUES (%s, %s, %s)", (ind['post_id'], tag, title))
+            cur.execute("INSERT INTO TAGSS (post_id, tag, title) VALUES (%s, %s, %s)", (ind['post_id'], tag, title))
             mysql.connection.commit()
             cur.close()
             return redirect('/')
@@ -189,7 +192,9 @@ def edit_blog(id):
 def delete_blog(id):
     session['login'] = True
     cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM TAGSS WHERE post_id = {}".format(id))
     cur.execute("DELETE FROM POSTS WHERE post_id = {}".format(id))
+
     mysql.connection.commit()
     flash("Your blog has been deleted", 'success')
     return redirect('/my-blogs')
