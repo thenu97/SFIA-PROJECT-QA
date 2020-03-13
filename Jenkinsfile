@@ -4,8 +4,9 @@ pipeline {
     stages {
         stage('Development Environment') {
             steps {
-                    sh 'echo "Hello World"'
-                    sh 'touch thenu.txt'
+                    sh 'chmod +x ./script/*' 
+                    sh './script/before_installation.sh' 
+                    sh './script/installation.sh'
                   
             }
         }
