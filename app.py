@@ -25,13 +25,18 @@ app.config['SECRET_KEY'] = 'secret'
 @app.route('/')
 def home():
     cur = mysql.connection.cursor()
-    resultValue = cur.execute("SELECT * from POSTS")
+    resultValue = cur.execute("SELECT * FROM POSTS")
     if resultValue > 0:
         blogs = cur.fetchall()
-        cur.close()
-        return render_template('index.html', title='REVISION BLOG', blogs=blogs)
+        print(blogs)
+        resValue = cur.execute("SELECT * FROM TAGS")
+        if resValue > 0:
+            t = cur.fetchall()
+            print(t)
+            cur.close()
+            return render_template('index.html', title='VOICE YOUR VIEWS', blogs=blogs, t=t)
     cur.close()
-    return render_template("index.html", title='REVISION BLOG', blogs=None)
+    return render_template("index.html", title='VOICE YOUR VIEWS', blogs=None, t=None)
 
 
 
@@ -93,6 +98,7 @@ def create():
     if request.method == 'POST':
         blogpost = request.form
         title = blogpost['title']
+        session['title'] = title
         content = blogpost['content']
         author = session['firstName'] + " " + session['secondName']
         cur = mysql.connection.cursor()
@@ -102,6 +108,25 @@ def create():
         flash("Successfully posted new blog", 'success')
         return redirect('/')
     return render_template('writeblog.html')
+
+
+
+@app.route('/tag', methods=['GET', 'POST'])
+def tag():
+    if request.method == 'POST':
+        blogtag = request.form
+        tag = blogtag['tag']
+        title = blogtag['title']
+        cur = mysql.connection.cursor()
+        resultValue = cur.execute("SELECT post_id FROM POSTS WHERE title = %s", [title])
+        if resultValue>0:
+            ind = cur.fetchone()
+            print(ind['post_id'])
+            cur.execute("INSERT INTO TAGS (post_id, tag, title) VALUES (%s, %s, %s)", (ind['post_id'], tag, title))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/')
+    return render_template('tag.html')
 
 
 
