@@ -1,23 +1,23 @@
-
-
 {% extends 'layout.html' %}
-
-
 {% block subcontent %}
 
-
-      
 <div class="jumbotron">
       <h1 align='center'>{{ title }}</h1>
    </div>
 {% if blogs %}
 {% for i in blogs %}
+
 <h3><a href="/blog/{{ i['post_id'] }}">{{i['title']}}</a></h3>
 <h5>Written by {{ i['author'] }}</h5>
-<br>
+{% for l in t %}
+         {% if i['post_id'] == l['post_id'] %}
+                     <h5>Tag: {{ l['tag'] }}</h5>
+         {% endif %}
+
 {% endfor %}
+{% endfor %}
+<br>
 {% else %}
 <h3>No blogs have been written yet</h3>
 {% endif %}
-
 {% endblock %}

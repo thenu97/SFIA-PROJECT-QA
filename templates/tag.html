@@ -5,19 +5,29 @@
 {% block subcontent %}
 
 
-<head>
-    <title>Select Box Control</title>
- </head>
- <body>
-    <p>Here's the list of subjects. Select any one:</p>
-    <form>
-       <select name = "dropdown">
-          <option value = "Computer Architecture" selected>Computer Architecture</option>
-          <option value = "Java">Java</option>
-          <option value = "Discrete Mathematics">Discrete Mathematics</option>
-       </select>
-    </form>
- </body>
+<form class="form-horizontal" method="POST">
 
+    
+   <div class="form-group">
+       <label class="control-label col-sm-2">Please enter the title of the blog you'd like to add a tag to:</label>
+       <div class="col-sm-5">
+           <input type="text" name="title"/>
+       </div>
+   </div>
+    
+      <div class="form-group">
+          <label class="control-label col-sm-2">Tag</label>
+          <div class="col-sm-5">
+              <input type="text" name="tag"/>
+          </div>
+      </div>
+
+<div class="form-group">
+      <label class="col-sm-offset-2 col-sm-10">
+         <button type="Submit">Submit </button>
+      </div>
+</div>
+
+</form>
 
 {% endblock %}
