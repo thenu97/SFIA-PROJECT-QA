@@ -60,7 +60,7 @@ As I wanted to keep my idea simple and user friendly, I decided to build a blog 
 
 As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category. (Full Trello Board Later in the Document) 
 
-![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello.PNG)
+![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello1.png)
 
 <a name="risktable"></a>
 ## Risk Assessment Table
