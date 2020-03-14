@@ -103,7 +103,75 @@ Most of the project requirements have been fullfilled at this point and the fina
 
 ![Completion..](/images/sprint4.PNG)
 
+<a name="techused"></a>
+### List of Technologies Used
 
+* MySQL for Application Database
+* Python - Coding in Flask
+* Flask - Framework 
+* Jenkins - CI Server
+* Testing - Pytest
+* [Github Project](https://github.com/thenu97/SFIA-PROJECT-QA) - Version Control System
+* [Trello Board](https://trello.com/b/2j1mrZib/project-blog) - Project Tracking Board
+* Google Cloud Platform Services (MySQL DB, Compute Engine, firewall)
+
+<a name="visrep"></a>
+### Front End Visual Representation of my Solution
+
+### Homepage before login
+
+![HomePage](/images/homebeforelogin.png)
+
+### Homepage after login
+
+![HomePage](/images/homeafterlogin.png)
+
+### View Post (Clicked into)
+![Advert View](/images/viewpost.png)
+
+### Abouts Page
+![Abouts Page](/images/about.png)
+
+### Login Page
+
+![Login Page](/images/login.png)
+
+### Register Page
+
+![Register Page](/images/register.png)
+
+### Registering New User
+
+![Register new user](/images/visrep11.jpg)
+
+### User Registered!
+
+![Register new user](/images/regsuccess.png)
+
+### User Logged in
+
+![User Logged In](/images/userlogging.png)
+
+### Viewing User created Ad (Users can only edit and update their own ads)
+
+![User Ad view](/images/editdelete.png)
+
+### Create Adverts Page
+
+![Create Ad Page](/images/createpost.png)
+
+### Create Tag
+
+![Create Tag](/images/addtag.png)
+
+### Deleted Account
+
+![Deleted Acc](/images/afteraccdelete.png)
+
+<a name="evaluation"></a>
+## Retrospect
+
+(enter self reflection)
 
 
 <a name="authorsinv"></a>
