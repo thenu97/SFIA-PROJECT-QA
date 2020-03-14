@@ -37,7 +37,7 @@ To create a CRUD application with utilisation of supporting tools, methodologies
 <a name="mysolution"></a>
 ### Solution
 
-I created a blogging site using Flask and Bootstrap for Front-End and Python, Jinja and SQL for the Back-End. The website is for users to voice their opinion on matters online without the worry of being judged. Users also have access to see the written posts by others on the site but are only able to edit and delete their work. 
+I created a blogging site using Flask and Bootstrap for Front-End and Python, Jinja and SQL for the Back-End. The website is for users to voice their opinion on matters online without the worry of being judged. Users also have access to see the posts written by others on the site but are only able to edit and delete their own work. 
 
 <a name="erdanddiagrams"></a>
 ## ERD and Diagrams
@@ -60,7 +60,7 @@ As I wanted to keep my idea simple and user friendly, I decided to build a blog 
 
 As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category. (Full Trello Board Later in the Document) 
 
-![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrllo.PNG)
+![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello.PNG)
 
 <a name="risktable"></a>
 ## Risk Assessment Table
@@ -86,7 +86,7 @@ describe sprint1
 
 (insert sprint2 and how it followed from sprint1) 
 
-![Sprint 2 Image](/images/sprint2.PNG)
+![Sprint 2 Image](/images/spint2.PNG)
 
 <a name="sprF"></a>
 ## Final Stages (Sprint 2....)
@@ -113,4 +113,4 @@ Thenuja Viknarajah
 <a name="acknowledgements"></a>
 ## Acknowledgements
 
-* Syed Ahmed - A true inspiration, he guided me in the right directions so many times. He has corrected the stupid mistakes in my code. He has pushed me to a point where I was ready to complete my project in week 3. Thanks for the great help, Syed!
+Syed Ahmed - A true inspiration, he guided me in the right directions so many times. He has corrected the stupid mistakes in my code. He has pushed me to a point where I was ready to complete my project in week 3. Thanks for the great help, Syed!
