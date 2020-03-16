@@ -140,10 +140,6 @@ Most of the project requirements have been fullfilled at this point and the fina
 
 ![Register Page](/images/register.png)
 
-### Registering New User
-
-![Register new user](/images/visrep11.jpg)
-
 ### User Registered!
 
 ![Register new user](/images/regsuccess.png)
