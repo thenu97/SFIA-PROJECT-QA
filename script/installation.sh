@@ -6,7 +6,13 @@ pip3 install Flask
 
 pip3 install flask_mysqldb
 
+pip3 install flask-bootstrap
+
+pip3 install flask-ckeditor
+
 pip3 install gunicorn
+
+pip3 install Werkzeug
 
 source ~/bashrc
 
