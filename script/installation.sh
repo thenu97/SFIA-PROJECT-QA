@@ -8,7 +8,7 @@ pip3 install flask_mysqldb
 
 pip3 install gunicorn
 
-source ~/.bashrc
+source ~/bashrc
 
 python3 app.py
 
