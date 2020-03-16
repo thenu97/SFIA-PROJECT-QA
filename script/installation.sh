@@ -2,11 +2,11 @@
 
 source venv/bin/activate
 
-pip3 install Flask
+sudo pip3 install Flask
 
-pip3 install flask_mysqldb
+sudo pip3 install flask_mysqldb
 
-pip3 install gunicorn
+sudo pip3 install gunicorn
 
 source ~/bashrc
 
