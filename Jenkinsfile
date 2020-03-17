@@ -13,6 +13,11 @@ pipeline {
                     sh 'sudo systemctl status flask.service'
 
             }
+        stage('Testing'){
+            steps {
+                sh 'pytest ./tests/testing.py'
+                }
+            }
         }
     }
 }
