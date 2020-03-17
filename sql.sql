@@ -21,13 +21,15 @@ PRIMARY KEY (post_id)
 );
 
 
-CREATE TABLE TAG (
+CREATE TABLE TAGSS (
 tag_id INT NOT NULL AUTO_INCREMENT,
-post_id INT NOT NULL,
+post_id INT,
 tag varchar(40) NOT NULL,
-PRIMARY KEY (tag_id),
-FOREIGN KEY (post_id) REFERENCES POSTS(post_id)
+PRIMARY KEY (tag_id)
 );
 
 
-SELECT TAG.post_id POSTS.post_id 
+ALTER TABLE TAGSS
+ADD title varchar(40);
+
+DELETE FROM TAGS WHERE post_id=5;
