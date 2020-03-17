@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Testing'){
             steps {
-                    sh './testing.sh'
+                    sh 'chmod +x ./testings/*'
+                    sh './testings/testing.sh'
                     sh 'python -m pytest ./tests/testing.py'
                 }
             }
