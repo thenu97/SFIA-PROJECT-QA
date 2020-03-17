@@ -15,7 +15,6 @@ pipeline {
             steps {
                     sh 'chmod +x ./testings/*'
                     sh './testings/testing.sh'
-                    sh 'python -m pytest ./tests/testing.py'
                 }
             }
         }

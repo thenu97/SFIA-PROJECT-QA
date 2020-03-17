@@ -2,4 +2,4 @@
 
 source venv/bin/activate
 
-pip3 install urllib3
+python -m pytest ./tests/testing.py
