@@ -18,7 +18,7 @@ python -m pip install pytest
 
 pip3 install urllib3
 
-pip3 install coverage
+python3 -m pip install coverage
 
 source ~/bashrc
 
