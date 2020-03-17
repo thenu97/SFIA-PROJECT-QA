@@ -14,6 +14,10 @@ pip3 install Werkzeug
 
 pip3 install Flask-WTF
 
+pip3 install -U pytest
+
+pip3 install urllib3
+
 source ~/bashrc
 
 python3 /var/lib/jenkins/workspace/Pipeline/app.py
