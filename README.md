@@ -56,52 +56,41 @@ As I wanted to keep my idea simple and user friendly, I decided to build a blog 
 
 <a name="riskassess"></a>
 ## Risk Assessment
-# Kanban  / Requirements / Product Backlog
-
-As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category. (Full Trello Board Later in the Document) 
-
-![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello1.png)
-
 <a name="risktable"></a>
 ## Risk Assessment Table
 ![Risk Assessment Table](/images/riskass1.PNG)
 ![Risk Assessment Table Part 2](/images/riskass2.PNG)
 
+# Kanban  / Requirements / Product Backlog
+As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category. (Full Trello Board Later in the Document) 
+![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello1.png)
+
 <a name="userstories"></a>
 ## User Stories (Users and Developers)
-
 The user stories were also done in trello to be an indication to me of what I want to aim for and provide to the user. It improved my planning and encouraged me to stay on the right path without drifting into complexity. In addition to the image of my user stories, I attached the key for my sprints.  
-
 ![UserStories](/images/userstories.png) ![Labels](/images/keyforuserstory.PNG)
 
 <a name="spr1"></a>
 ## Trello Board (Sprint 1)
-
-describe sprint1
-
 ![Trello Image](/images/sprintttt1.PNG)
 
 <a name="spr2"></a>
 ## Trello Board (Sprint 2)
-
 (insert sprint2 and how it followed from sprint1) 
-
 ![Sprint 2 Image](/images/spint2.PNG)
 
 <a name="sprF"></a>
-## Final Stages (Sprint 2....)
-
+## Trello Board (Sprint 3)
 Most of the project requirements have been fullfilled at this point and the final touches are being made, as you can see the items that needed actioning have been moved to the done stage and the few optional requirements are being finalised.
-(Click image for higher quality image) 
+![Sprint 3](/images/sprint3.PNG)
 
-![Sprint 2 Continued..](/images/sprint3.PNG)
+## Trello Board (Sprint 4)
+![Sprint 4](/images/sprint4.PNG)
 
 <a name="sprFF"></a>
-## Last Sprint to completion
-
+## Completion
 (insert info about sprint3)
-
-![Completion..](/images/sprint4.PNG)
+![Completion](/images/sprint4.PNG)
 
 <a name="techused"></a>
 ### List of Technologies Used
@@ -119,11 +108,9 @@ Most of the project requirements have been fullfilled at this point and the fina
 ### Front End Visual Representation of my Solution
 
 ### Homepage before login
-
 ![HomePage](/images/homebeforelogin.png)
 
 ### Homepage after login
-
 ![HomePage](/images/homeafterlogin.png)
 
 ### View Post (Clicked into)
@@ -133,35 +120,27 @@ Most of the project requirements have been fullfilled at this point and the fina
 ![Abouts Page](/images/about.png)
 
 ### Login Page
-
 ![Login Page](/images/login.png)
 
 ### Register Page
-
 ![Register Page](/images/register.png)
 
 ### User Registered!
-
 ![Register new user](/images/regsuccess.png)
 
 ### User Logged in
-
 ![User Logged In](/images/userlogging.png)
 
 ### Viewing User created Ad (Users can only edit and update their own ads)
-
 ![User Ad view](/images/editdelete.png)
 
 ### Create Adverts Page
-
 ![Create Ad Page](/images/createpost.png)
 
 ### Create Tag
-
 ![Create Tag](/images/addtag.png)
 
 ### Deleted Account
-
 ![Deleted Acc](/images/afteraccdelete.png)
 
 <a name="evaluation"></a>
