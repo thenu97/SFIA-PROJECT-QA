@@ -18,6 +18,4 @@ pip3 install Flask-WTF
 
 source ~/bashrc
 
-python3 app.py
-
-gunicorn --workers=4 --bind=0.0.0.0:5000 app:app
+/var/lib/jenkins/workspace/Pipeline/venv/bin/gunicorn --workers=4 --bind=0.0.0.0:5000 app:app
