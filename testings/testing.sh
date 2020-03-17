@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source venv/bin/activate
+source /var/lib/jenkins/workspace/Pipeline/venv/bin/activate
 
 python -m pytest ./tests/testing.py
