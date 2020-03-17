@@ -10,12 +10,14 @@ pip3 install flask-bootstrap
 
 pip3 install flask-ckeditor
 
-pip3 install gunicorn
-
 pip3 install Werkzeug
 
 pip3 install Flask-WTF
 
+pip3 install -U pytest
+
+pip3 install urllib3
+
 source ~/bashrc
 
-/var/lib/jenkins/workspace/Pipeline/venv/bin/gunicorn --workers=4 --bind=0.0.0.0:5000 app:app
+python3 /var/lib/jenkins/workspace/Pipeline/app.py

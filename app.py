@@ -28,11 +28,9 @@ def home():
     resultValue = cur.execute("SELECT * FROM POSTS")
     if resultValue > 0:
         blogs = cur.fetchall()
-        print(blogs)
         resValue = cur.execute("SELECT * FROM TAGSS")
         if resValue > 0:
             t = cur.fetchall()
-            print(t)
             cur.close()
             return render_template('index.html', title='VOICE YOUR VIEWS', blogs=blogs, t=t)
         else:
@@ -124,7 +122,6 @@ def tag():
         resultValue = cur.execute("SELECT post_id FROM POSTS WHERE title = %s", [title])
         if resultValue>0:
             ind = cur.fetchone()
-            print(ind['post_id'])
             cur.execute("INSERT INTO TAGSS (post_id, tag, title) VALUES (%s, %s, %s)", (ind['post_id'], tag, title))
             mysql.connection.commit()
             cur.close()
@@ -152,10 +149,8 @@ def my_blog():
     author = session['firstName'] + " " + session['secondName']
     cur = mysql.connection.cursor()
     resultValue = cur.execute("SELECT * from POSTS WHERE author = %s", [author])
-    print(resultValue)
     if resultValue > 0:
         my_blogs = cur.fetchall()
-        print(my_blogs)
         cur.close()
         return render_template('my-blog.html', my_blogss=my_blogs)
     else:
@@ -180,7 +175,6 @@ def edit_blog(id):
     resultValue = cur.execute("SELECT * FROM POSTS where post_id = {}".format(id))
     if resultValue>0:
         blog = cur.fetchone()
-        print(blog)
         blog_form = {}
         blog_form['title'] = blog['title']
         blog_form['content'] = blog['content']

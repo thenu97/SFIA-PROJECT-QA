@@ -70,9 +70,9 @@ As seen below I have created a priority list where all the requirements of the p
 <a name="userstories"></a>
 ## User Stories (Users and Developers)
 
-The user stories were also done in trello to be an indication to me of what I want to aim for and provide to the user. It improved my planning and encouraged me to stay on the right path without drifting into complexity.
+The user stories were also done in trello to be an indication to me of what I want to aim for and provide to the user. It improved my planning and encouraged me to stay on the right path without drifting into complexity. In addition to the image of my user stories, I attached the key for my sprints.  
 
-![UserStories](/images/userstories.png)
+![UserStories](/images/userstories.png) ![Labels](/images/keyforuserstory.PNG)
 
 <a name="spr1"></a>
 ## Trello Board (Sprint 1)
