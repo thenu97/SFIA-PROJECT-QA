@@ -14,8 +14,8 @@ pipeline {
         stage('Testing'){
             steps {
                     sh 'python3 -m pytest ./tests/testing.py'
-                    sh 'chmod +x ./testings/*'
-                    sh './testings/testing.sh'
+                    sh 'coverage run -m pytest tests/testing.py'
+                    sh 'coverage report -m'
                 }
             }
         }
