@@ -12,7 +12,7 @@ pipeline {
                     sh 'sudo systemctl start flask.service'
                     sh 'sudo systemctl status flask.service'
                     sh 'sudo systemctl restart flask.service'
-
+                    sh './script/installation.sh'
             }
         }
     }
