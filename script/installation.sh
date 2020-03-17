@@ -16,4 +16,4 @@ pip3 install Flask-WTF
 
 source ~/bashrc
 
-python3 /var/lib/jenkins/workspace/Pipeline/venv/bin/app.py
+python3 /var/lib/jenkins/workspace/Pipeline/app.py
