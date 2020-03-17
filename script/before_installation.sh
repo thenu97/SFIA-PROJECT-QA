@@ -12,7 +12,3 @@ sudo apt-get install libmysqlclient-dev -y
 
 python3 -m venv venv
 
-pip3 install -U pytest
-
-pip3 install urllib3
-
