@@ -2,4 +2,4 @@
 
 source /var/lib/jenkins/workspace/Pipeline/venv/bin/activate
 
-python -m pytest ./tests/testing.py
+python3 -m pytest ./tests/testing.py
