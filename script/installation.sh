@@ -2,6 +2,8 @@
 
 source venv/bin/activate
 
+python -m pip install pytest
+
 pip3 install Flask
 
 pip3 install flask_mysqldb
