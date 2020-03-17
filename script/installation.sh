@@ -18,6 +18,8 @@ python -m pip install pytest
 
 pip3 install urllib3
 
+pip3 install coverage
+
 source ~/bashrc
 
 python3 /var/lib/jenkins/workspace/Pipeline/app.py
