@@ -11,6 +11,8 @@ app = Flask(__name__)
 Bootstrap(app)
 ckeditor = CKEditor(app)
 
+source ~/bashrc
+
 
 app.config['MYSQL_HOST'] = os.environ['MYSQLHOST']
 app.config['MYSQL_USER'] = os.environ['MYSQLUSER']
