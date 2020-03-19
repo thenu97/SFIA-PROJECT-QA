@@ -27,8 +27,6 @@
 
 [Authors](#authorsinv)
 
-[Acknowledgements](#acknowledgements)
-
 <a name="brief"></a>
 ## The Product Brief
 
@@ -153,7 +151,3 @@ Most of the project requirements have been fullfilled at this point and the fina
 ## Authors
 Thenuja Viknarajah
 
-<a name="acknowledgements"></a>
-## Acknowledgements
-
-Syed Ahmed - A true inspiration, he guided me in the right directions so many times. He has corrected the stupid mistakes in my code. He has pushed me to a point where I was ready to complete my project in week 3. Thanks for the great help, Syed!
