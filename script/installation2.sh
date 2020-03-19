@@ -20,6 +20,4 @@ pip3 install urllib3
 
 python3 -m pip install coverage
 
-pip3 install selenium
-
 source /var/lib/jenkins/bashrc
