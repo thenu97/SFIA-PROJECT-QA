@@ -22,6 +22,6 @@ python3 -m pip install coverage
 
 pip3 install selenium
 
-source ~/bashrc
+source /var/lib/jenkins/bashrc
 
 python3 /var/lib/jenkins/workspace/Pipeline/app.py
