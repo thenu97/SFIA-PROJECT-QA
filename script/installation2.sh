@@ -22,4 +22,4 @@ python3 -m pip install coverage
 
 pip3 install selenium
 
-source var/lib/jenkins/bashrc
+source /var/lib/jenkins/bashrc
