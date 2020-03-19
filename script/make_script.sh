@@ -7,8 +7,9 @@ sudo systemctl enable flask.service
 
 sudo systemctl stop flask.service
 sudo systemctl start flask.service
-sleep 10
 
-source  ~/bashrc
+source /var/lib/jenkins/bashrc
+source /var/lib/jenkins/workspace/Pipeline/venv/bin/activate
+
 /var/lib/jenkins/workspace/Pipeline/venv/bin/coverage run -m pytest /var/lib/jenkins/workspace/Pipeline/tests/testing.py
 /var/lib/jenkins/workspace/Pipeline/venv/bin/coverage report -m
