@@ -14,11 +14,13 @@ pip3 install Werkzeug
 
 pip3 install Flask-WTF
 
-python -m pip install pytest
+python3 -m pip install pytest
 
 pip3 install urllib3
 
 python3 -m pip install coverage
+
+pip3 install selenium
 
 source ~/bashrc
 
