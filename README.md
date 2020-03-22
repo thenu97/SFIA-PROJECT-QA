@@ -167,7 +167,10 @@ webhooks with Jenkins, the process would then go into automatically triggering t
 
 <a name="evaluation"></a>
 ## Retrospect
-
+The three main stuggles faced were getting session in Flask, flashed messages and pytest to work in the way I wanted it to. 
+1. To overcome the problem with session, I copied my entire project onto my laptop and experimented with it. 
+2. For flashed messages, I incorperated a code in html file from the search conducted to get it to work.
+3. Lastly, for pytest after thorough research and experimenting with my codes, I understood what had to be done. 
 
 <a name="authorsinv"></a>
 ## Authors
