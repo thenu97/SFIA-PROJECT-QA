@@ -1,11 +1,13 @@
 import urllib3
 import flask
+import pytest
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_mysqldb import MySQL
 from flask_ckeditor import CKEditor
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from app import home, about, register, login, create, tag, my_blog, logout, account_delete
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -21,6 +23,7 @@ mysql = MySQL(app)
 
 app.config['SECRET_KEY'] = 'secret'
 
+############# testing url #############
 def test_home():
     http = urllib3.PoolManager()
     r = http.request('GET', 'http://35.230.137.31:5000/')
@@ -46,7 +49,27 @@ def test_view():
     r = http.request('GET', 'http://35.230.137.31:5000/blog/2')
     assert 200 == r.status
 
+def test_login():
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'http://35.230.137.31:5000/login/')
+    assert 200 == r.status
 
+def test_registration():
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'http://35.230.137.31:5000/register/')
+    assert 200 == r.status
+
+def test_nonexist():
+    http = urllib3.PoolManager()
+    r = http.request('GET', "http://35.230.137.31:5000/nonexist")
+    assert 404 == r.status
+
+def test_myblogs():
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'http://35.230.137.31:5000/my-blogs')
+    assert 500 == r.status
+
+############# testing db functionality #############
 def test_select():
     with app.app_context():
         cur = mysql.connection.cursor()
@@ -55,7 +78,6 @@ def test_select():
         cur.close()
     print(resultValue)
     assert 5 == resultValue
-
 
 def test_insert():
     with app.app_context():
@@ -70,7 +92,7 @@ def test_insert():
     assert('testing') == record_after[lena-1]['author']
     assert('TESTING') == record_after[lena-1]['title']
 
-def test_update():
+def test_update1():
     with app.app_context():
         cur = mysql.connection.cursor()
         cur.execute("UPDATE POSTS SET content = 'Testing' WHERE title = 'TESTING'")
@@ -80,6 +102,17 @@ def test_update():
         cur.close()
     lena = len(records_after)
     assert('Testing') == records_after[lena-1]['content']
+
+def test_update2():
+    with app.app_context():
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE POSTS SET title = 'TESTing' WHERE content = 'Testing'")
+        mysql.connection.commit()
+        cur.execute("SELECT * FROM POSTS")
+        records_after = cur.fetchall()
+        cur.close()
+    lena = len(records_after)
+    assert('TESTing') == records_after[lena-1]['title']
 
 def test_delete():
     with app.app_context():

@@ -9,18 +9,14 @@ import os
 app = Flask(__name__)
 Bootstrap(app)
 ckeditor = CKEditor(app)
-
+mysql = MySQL(app)
 
 app.config['MYSQL_HOST'] = os.environ['MYSQLHOST']
 app.config['MYSQL_USER'] = os.environ['MYSQLUSER']
 app.config['MYSQL_PASSWORD'] = os.environ['MYSQLPASSWORD']
 app.config['MYSQL_DB'] = os.environ['MYSQLDB']
 app.config['MYSQL_CURSORCLASS']='DictCursor'
-
-mysql = MySQL(app)
-
 app.config['SECRET_KEY'] = 'secret'
-
 
 @app.route('/')
 def home():
@@ -39,13 +35,9 @@ def home():
     cur.close()  
     return render_template("index.html", title='VOICE YOUR VIEWS', blogs=None, t=None)
 
-
-
 @app.route('/about')
 def about():
     return render_template("about.html", title='ABOUT US')
-
-
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -61,8 +53,6 @@ def register():
         flash('Registeration successful! Please login.', 'success')
         return redirect('/login/')
     return render_template('register.html')
-
-
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
@@ -91,8 +81,6 @@ def login():
         return redirect('/')
     return render_template('login.html')
 
-
-
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     session['login'] = True
@@ -110,8 +98,6 @@ def create():
         return redirect('/')
     return render_template('writeblog.html')
 
-
-
 @app.route('/tag', methods=['GET', 'POST'])
 def tag():
     if request.method == 'POST':
@@ -128,8 +114,6 @@ def tag():
             return redirect('/')
     return render_template('tag.html')
 
-
-
 @app.route('/blog/<int:id>')
 def blogs(id):
     session['login'] = True
@@ -140,8 +124,6 @@ def blogs(id):
         cur.close()
         return render_template('blog.html', blog=blog)
     return "Blog not found"
-
-
 
 @app.route('/my-blogs', methods=['GET', 'POST'])
 def my_blog():
@@ -156,8 +138,6 @@ def my_blog():
     else:
         cur.close()
         return render_template('my-blog.html', my_blogss=None)
-
-
 
 @app.route('/edit-blog/<int:id>', methods=['GET', 'POST'])
 def edit_blog(id):
@@ -180,28 +160,21 @@ def edit_blog(id):
         blog_form['content'] = blog['content']
     return render_template('editblog.html', blog_form=blog_form)
 
-
-
 @app.route('/delete-blog/<int:id>')
 def delete_blog(id):
     session['login'] = True
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM TAGSS WHERE post_id = {}".format(id))
     cur.execute("DELETE FROM POSTS WHERE post_id = {}".format(id))
-
     mysql.connection.commit()
     flash("Your blog has been deleted", 'success')
     return redirect('/my-blogs')
-
-
 
 @app.route('/logout')
 def logout():
     session['login'] = False
     flash("You have been logged out", 'info')
     return redirect('/login/')
-
-
 
 @app.route('/account/delete', methods=['GET','POST'])
 def account_delete():
@@ -217,8 +190,5 @@ def account_delete():
         return redirect('/')
     return render_template("delete.html")
 
-
-
 if __name__ == '__main__':
     app.run('0.0.0.0', debug=True)
-    
