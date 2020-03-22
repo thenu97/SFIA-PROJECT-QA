@@ -103,6 +103,22 @@ Most of the project requirements have been fullfilled at this point and the fina
 * [Trello Board](https://trello.com/b/2j1mrZib/project-blog) - Project Tracking Board
 * Google Cloud Platform Services (MySQL DB, Compute Engine, firewall)
 
+<a name="testingmethod"></a>
+## Testing Methodology
+Decided to use Pytest to create my tests, Mostly testing all my routes and request codes to see if everything was working correctly
+I automated the testing using Jenkins, making sure that the deployment would not go ahead unless the tests passed as the build/deploy
+process was a trigger I set up in Jenkins.
+
+<a name="testingreport"></a>
+### Testing Report (Pytest Generated HTML)
+Below is the HTML Coverage Report that was generated using the command "coverage html" on VSCode. 
+![HTML Coverage Report](/images/htmlcoverage.PNG)
+
+### Testing Report (Generated after automated Jenkins Test)
+Here is the coverage report which was generated on Jenkins after the automated testing took place. 
+![Jenkins Coverage Report](/images/testing1.PNG)
+
+
 <a name="visrep"></a>
 ### Front End Visual Representation of my Solution
 
