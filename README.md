@@ -12,7 +12,8 @@
 [Sprints & Planning](#spr1)
    * [Trello Board Sprint 1.0](#spr1)
    * [Trello Board Sprint 2.0](#spr2)
-   * [Trello Board Sprint 2.1 Continued...](#sprF)
+   * [Trello Board Sprint 3.0](#spr3)
+   * [Trello Board Sprint 4.0](#spr4)
    * [Trello Board Completion Stage](#sprFF)
 	
 [Testing Methadology](#testingmethod)
@@ -70,30 +71,32 @@ The user stories were also done in trello to be an indication to me of what I wa
 ![UserStories](/images/userstories.png) ![Labels](/images/keyforuserstory.PNG)
 
 <a name="spr1"></a>
+## Trello Board
+This is my Trello Board at the beginning. I based the sprints on our weekly target goals for the project so each sprint lasted a week.
+![Trello Image Before](/images/start.png)
+
 ## Trello Board (Sprint 1)
-![Trello Image](/images/sprintttt1.PNG)
+![Trello Image](/images/sprint1i.png)
 
 <a name="spr2"></a>
 ## Trello Board (Sprint 2)
-(insert sprint2 and how it followed from sprint1) 
-![Sprint 2 Image](/images/spint2.PNG)
+![Sprint 2 Image](/images/sprint2i.png)
 
 <a name="sprF"></a>
 ## Trello Board (Sprint 3)
-Most of the project requirements have been fullfilled at this point and the final touches are being made, as you can see the items that needed actioning have been moved to the done stage and the few optional requirements are being finalised.
-![Sprint 3](/images/sprint3.PNG)
+![Sprint 3](/images/sprint3i.png)
 
 ## Trello Board (Sprint 4)
-![Sprint 4](/images/sprint4.PNG)
+You can see how the items from the 'doing' and 'things to be done' is being moved to 'done'.
+![Sprint 4](/images/sprint4i.png)
 
 <a name="sprFF"></a>
 ## Completion
-(insert info about sprint3)
-![Completion](/images/sprint4.PNG)
+This is how my Trello Board looked at the end of week 4.
+![Completion](/images/after.png)
 
 <a name="techused"></a>
 ### List of Technologies Used
-
 * MySQL for Application Database
 * Python - Coding in Flask
 * Flask - Framework 
@@ -164,8 +167,6 @@ webhooks with Jenkins, the process would then go into automatically triggering t
 
 <a name="evaluation"></a>
 ## Retrospect
-
-(enter self reflection)
 
 
 <a name="authorsinv"></a>
