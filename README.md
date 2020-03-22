@@ -80,11 +80,11 @@ This is my Trello Board at the beginning. I based the sprints on our weekly targ
 
 <a name="spr2"></a>
 ## Trello Board (Sprint 2)
-![Sprint 2 Image](/images/sprint2i.png)
+![Sprint 2 Image](/images/sprint3i.png)
 
 <a name="sprF"></a>
 ## Trello Board (Sprint 3)
-![Sprint 3](/images/sprint3i.png)
+![Sprint 3](/images/sprint2i.png)
 
 ## Trello Board (Sprint 4)
 You can see how the items from the 'doing' and 'things to be done' is being moved to 'done'.
