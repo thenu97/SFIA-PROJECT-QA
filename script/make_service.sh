@@ -1,4 +1,6 @@
 #!/bin/bash
+source /var/lib/jenkins/workspace/Pipeline/venv/bin/activate
+
 
 sudo cp /var/lib/jenkins/workspace/Pipeline/flask.service /etc/systemd/system
 sudo systemctl daemon-reload
