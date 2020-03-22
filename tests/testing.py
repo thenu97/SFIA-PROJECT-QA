@@ -9,6 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from app import home, about, register, login, create, tag, my_blog, logout, account_delete
 
+
 app = Flask(__name__)
 Bootstrap(app)
 ckeditor = CKEditor(app)
