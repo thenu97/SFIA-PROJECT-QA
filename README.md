@@ -113,7 +113,7 @@ process was a trigger I set up in Jenkins.
 ### Testing Report (Pytest Generated HTML)
 Below is the HTML Coverage Report that was generated using the command "coverage html" on VSCode. 
 ![HTML Coverage Report](/images/htmlcoverage1.png)
-(/images/htmlcoverage2.png)
+![HTML Coverage Report](/images/htmlcoverage2.png)
 
 ### Testing Report (Generated after automated Jenkins Test)
 Here is the coverage report which was generated on Jenkins after the automated testing took place. 
