@@ -60,7 +60,7 @@ As I wanted to keep my idea simple and user friendly, I decided to build a blog 
 ![Risk Assessment Table Part 2](/images/riskass2.PNG)
 
 # Kanban  / Requirements / Product Backlog
-As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category. (Full Trello Board Later in the Document) 
+As seen below I have created a priority list where all the requirements of the project are listed, I used a colour labelling method On Trello to make sure that each requirement had its own importance category.
 
 ![Kanban](/images/productbacklog.png) ![Labels](/images/keyfortrello1.png)
 
@@ -105,9 +105,7 @@ Most of the project requirements have been fullfilled at this point and the fina
 
 <a name="testingmethod"></a>
 ## Testing Methodology
-Decided to use Pytest to create my tests, Mostly testing all my routes and request codes to see if everything was working correctly
-I automated the testing using Jenkins, making sure that the deployment would not go ahead unless the tests passed as the build/deploy
-process was a trigger I set up in Jenkins.
+I decided to use pytest to run my tests, mostly checking database and url is functioning correctly. I automated testing and deployment using Jenkins. I made sure the test was done first before the application was deployed as a service. 
 
 <a name="testingreport"></a>
 ### Testing Report (Pytest Generated HTML)
@@ -119,6 +117,11 @@ Below is the HTML Coverage Report that was generated using the command "coverage
 Here is the coverage report which was generated on Jenkins after the automated testing took place. 
 ![Jenkins Coverage Report](/images/testing1.PNG)
 
+<a name="deploymentmethod"></a>
+## Deployment
+![Deployment Pipeline](/images/pipeline.PNG)
+The Deployment pipeline for this Flask application was done using Git/Github for version control and automating that process using
+webhooks with Jenkins, the process would then go into automatically triggering the testing phase which I did using Pytest on a VM running Jenkins, after the tests Jenkins will be triggered into the build process - where if the testing was successful, Jenkins will then build and deploy the app as a service.
 
 <a name="visrep"></a>
 ### Front End Visual Representation of my Solution
