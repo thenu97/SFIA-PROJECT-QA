@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Development Testing') {
+        stage('Testing') {
+            steps {
+                    sh 'chmod +x ./script/*'
+                    sh './script/make_script.sh'
+            }
+        }
+        stage('Development') {
             steps {
                     sh 'chmod +x ./script/*' 
                     sh './script/before_installation.sh' 
@@ -11,11 +17,5 @@ pipeline {
             }
         }
 
-        stage('Testing') {
-            steps {
-                    sh './script/make_script.sh'
-                }
-            }
-
-        }
     }
+}
