@@ -1,8 +1,8 @@
 #!/bin/bash
-source /var/lib/jenkins/workspace/pipeline/venv/bin/activate
+source /var/lib/jenkins_home/workspace/pipeline/venv/bin/activate
 
 
-sudo cp /var/lib/jenkins/workspace/pipeline/flask.service /etc/systemd/system
+sudo cp /var/lib/jenkins_home/workspace/pipeline/flask.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable flask.service
 
