@@ -24,4 +24,4 @@ pip3 install selenium
 
 source ~/bashrc
 
-python3 /var/lib/jenkins/workspace/pipeline/app.py
+python3 /var/lib/jenkins_home/workspace/pipeline/app.py
